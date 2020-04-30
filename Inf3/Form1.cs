@@ -271,8 +271,35 @@ namespace Inf3
 
         private void ColorToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            colorDialog1.ShowDialog();
-            listView1.BackColor = colorDialog1.Color;
+            Color gfcolor = Color.White, doccolor = Color.White, datcolor = Color.White, execolor=Color.White;
+            MessageBox.Show("Выберите цвет для графических файлов (png, bmp, jpg, gif)");
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                gfcolor = colorDialog1.Color;
+            }
+            MessageBox.Show("Выберите цвет для офисных файлов (docx, xlsx, pdf, txt)");
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                doccolor = colorDialog1.Color;
+            }
+            MessageBox.Show("Выберите цвет для архивов (zip, rar)");
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                datcolor = colorDialog1.Color;
+            }
+            MessageBox.Show("Выберите цвет для файлов (exe, dl)");
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                execolor = colorDialog1.Color;
+            }
+            for(int i=0;i<listView1.Items.Count;i++)
+            {
+                string type = listView1.Items[i].SubItems[2].Text;
+                if ((type == "png") || (type == "jpg") || (type == "bmp") || (type == "gif")) listView1.Items[i].BackColor = gfcolor;
+                if ((type == "docx") || (type == "xlsx") || (type == "pdf") || (type == "txt")) listView1.Items[i].BackColor = doccolor;
+                if ((type == "zip") || (type == "rar")) listView1.Items[i].BackColor = datcolor;
+                if ((type == "exe") || (type == "dll")) listView1.Items[i].BackColor = execolor;
+            }
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
