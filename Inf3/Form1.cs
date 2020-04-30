@@ -348,7 +348,7 @@ namespace Inf3
 
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+             MessageBox.Show("Обозреватель директорий, позволяющее визуализировать определенным образом содержимое директорий пользователя.\nВариант #9");
         }
     }
 }
